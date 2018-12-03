@@ -2,7 +2,7 @@
 
 In this paper we describe a modification of an Arduino Wechat Jump game robot. The original project, developed by Zhihu pipiwa on zhihu.com, describes an Arduino controlled robot detects the role position and destination position and calculates the pressing time by scanning screenshot from the game. After all, calculating on the computer, Arduino will receive a pressing time and then use a servo to achieve press in order to gain more goals. The work will build on the original project with the additional effort of avoiding physical gadget deviation on pressing time.
 
-#Team
+# Team
 The build team consists of:
 
 @#1 Student: Jifeng Zheng<br>
