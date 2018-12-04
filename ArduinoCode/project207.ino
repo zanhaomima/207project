@@ -46,21 +46,34 @@ void loop()
   Serial.println(howlong);
   //if the time is bigger than 0, we needs to output the message srceen and let the Servo work
   if(howlong>0){
+    //point to the 0,0
     lcd.setCursor(0,0);
+    //show the "Passing Time is" to he 0,0
     lcd.print ("Passing Time is");
+    //point to the 0,1
     lcd.setCursor(0, 1);
+    //display the time of ns to the 0,1
     lcd.print(howlong);
     lcd.print ("ns");
+    //let the servo true to pass the iphone screen
     myservo.write(passpos);
+    //wait for the time
     delay(howlong);
+    //let the servo release to pass the iphone screen
     myservo.write(pos);
   }
   else{
+    //point to the 0,0
     lcd.setCursor(0,0);
+    //show the "Calculating...   " to he 0,0
     lcd.print ("Calculating...   ");
+    //point to the 0,1
     lcd.setCursor(0, 1);
+    //showing how many secends the program starting now
     lcd.print(millis() / 1000);
+    //outprint the s and space
     lcd.print ("s              ");
+    //let the servo release to pass the iphone screen
     myservo.write(pos);
   }
 } 
