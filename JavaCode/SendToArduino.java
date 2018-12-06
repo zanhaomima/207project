@@ -28,16 +28,16 @@ public class SendToArduino {
 		}
 		long t=System.currentTimeMillis();
 		output.print(timepass);
-		output.flush();
+		output.flush();//send press time to arduino
 		System.out.println("Sent passtime:"+timepass+" "+(System.currentTimeMillis()-t));
 		t=System.currentTimeMillis();
 	}
-	
+	//show all the ports are used 
 	public void printPorts() {
 		SerialPort[] portNames = SerialPort.getCommPorts();
 		for(int i = 0; i < portNames.length; i++) System.out.println(i+" "+portNames[i].getSystemPortName());
 	}
-	
+	//function to set connnection to arduino
 	public String connect(int i) {
 		SerialPort[] portNames = SerialPort.getCommPorts();
 		chosenPort = SerialPort.getCommPort(portNames[i].getSystemPortName());
