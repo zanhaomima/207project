@@ -14,7 +14,7 @@ public class JumpPNGCalculate {
  
     private final PixelRGB       rgbInfo                 = new PixelRGB();
  
-    //截屏中游戏分数显示区域最下方的Y坐标，300是 1920x1080的值，根据实际情况修改
+    //Y-axis of the score only for 1920x1080   change accordingly
     private final int           gameScoreBottomY        = 160;
  
     //按压的时间系数，可根据具体情况适当调节
