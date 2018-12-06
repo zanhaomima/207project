@@ -40,6 +40,8 @@ board
 position
 ● Milestone 5
 ● Milestone 6
+
+
 IV. MILESTONES
 kept properly on track, the following milestones should be
 Nov 1st
