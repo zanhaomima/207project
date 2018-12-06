@@ -9,4 +9,4 @@ The build team consists of:
 @#2 Student: Xiaowei Liang
 
 #
-![alt text](https://raw.githubusercontent.com/zanhaomima/207project/cs207.png)
+![alt text](https://github.com/zanhaomima/207project/blob/master/cs207.png)
