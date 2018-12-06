@@ -8,5 +8,5 @@ The build team consists of:
 @#1 Student: Jifeng Zheng<br>
 @#2 Student: Xiaowei Liang
 
-#Arduino_connection
+# Arduino_connection
 ![alt text](https://github.com/zanhaomima/207project/blob/master/cs207.png)
