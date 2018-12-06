@@ -14,8 +14,8 @@ import javax.imageio.ImageIO;
 
 public class JumpJump {
 	
-	private String filePreStr; // 默认前缀（选择存储路径例如： D：\\）
-    static int serialNum = 0;  //截图名称后面的数字累加
+	private String filePreStr; // where you sace the screen shot
+    static int serialNum = 0;  //use this number to name the screen shot save in pc
     private static int time=0;
 //    Dimension d=Toolkit.getDefaultToolkit().getScreenSize();
     
@@ -27,9 +27,10 @@ public class JumpJump {
         try {
             // *** 核心代码 *** 拷贝屏幕到一个BufferedImage对象screenshot
             BufferedImage screenshot = (new Robot()).createScreenCapture(new Rectangle(10, 23, (int) 610, (int) 1111));
+		//screen shot from your labtop screen X-axe 10-610 to Y-axe 23-1111
             File f = new File(filePreStr);
             System.out.print("Save File " + filePreStr);
-            // 将screenshot对象写入图像文件
+            // save file to directory
             ImageIO.write(screenshot, "png", f);
             System.out.print("..Finished!\n");
         } catch (Exception ex) {
@@ -37,11 +38,11 @@ public class JumpJump {
         }
     }
 	
-	public static void main(String[] args) throws IOException {
-		Scanner enter = new Scanner(System.in);
+	public static void main(String[] args) throws IOException {    //main function here 
+		Scanner enter = new Scanner(System.in);     
 		SendToArduino arduinoSender=new SendToArduino();
-        arduinoSender.printPorts();
-        int port=enter.nextInt();
+        arduinoSender.printPorts();//print list of port you connect
+        int port=enter.nextInt();//chose port by enter a port option
         String s=arduinoSender.connect(port);
         System.out.println(s);
         if(s.equals("connect Seccued!")) {
@@ -54,15 +55,15 @@ public class JumpJump {
 	
 	public static void runJumpJump(SendToArduino arduinoSender) throws IOException {
 		screenShot();
-		int timepass=JumpPNGCalculateRun();
+		int timepass=JumpPNGCalculateRun();//getting presstime from JumpPNGCalculateRun function
 		if(timepass==-1) {
 			System.out.println("找不到小人");
 			runJumpJump(arduinoSender);
 			return ;
 		}
-    	arduinoSender.sendToArduino(timepass);
+    	arduinoSender.sendToArduino(timepass);//send to arduino the press time
     	try {Thread.sleep(3000); } catch(Exception e) {}
-    	runJumpJump(arduinoSender);
+    	runJumpJump(arduinoSender);//call this function every 6s to keep calculate the press time and send to arduino 
     	try {Thread.sleep(3000); } catch(Exception e) {}
         
 	}
@@ -75,8 +76,8 @@ public class JumpJump {
 	
 	public static int JumpPNGCalculateRun() throws IOException {
 		long t=System.currentTimeMillis();
-		subPNGfinding j=new subPNGfinding("/Users/jifengzheng/Desktop/","Jump.png","Jm.png",time++);
-		if(j.findingsub()) {
+		subPNGfinding j=new subPNGfinding("/Users/jifengzheng/Desktop/","Jump.png","Jm.png",time++);//function to scan the piece base on image we got out from screen shot by PS
+		if(j.findingsub()) { //
 			j.findingStepPosition();
 			double dist=j.CalaterDistance();
 			System.out.println("Using time: "+(System.currentTimeMillis()-t)+" ns");
