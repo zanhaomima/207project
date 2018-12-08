@@ -25,9 +25,9 @@ public class JumpJump {
  
     public void snapShot() {
         try {
-            // *** 核心代码 *** 拷贝屏幕到一个BufferedImage对象screenshot
+            // taking a screen shot 
             BufferedImage screenshot = (new Robot()).createScreenCapture(new Rectangle(10, 23, (int) 610, (int) 1111));
-		//screen shot from your labtop screen X-axe 10-610 to Y-axe 23-1111
+		//screen shot from your labtop screen X-axe 10-610 to Y-axe 23-1111 change accordingly to your screen size
             File f = new File(filePreStr);
             System.out.print("Save File " + filePreStr);
             // save file to directory
@@ -57,8 +57,8 @@ public class JumpJump {
 		screenShot();
 		int timepass=JumpPNGCalculateRun();//getting presstime from JumpPNGCalculateRun function
 		if(timepass==-1) {
-			System.out.println("找不到小人");
-			runJumpJump(arduinoSender);
+			System.out.println("找不到小人");// print not find chess piece
+			runJumpJump(arduinoSender);//if not find try it again
 			return ;
 		}
     	arduinoSender.sendToArduino(timepass);//send to arduino the press time
