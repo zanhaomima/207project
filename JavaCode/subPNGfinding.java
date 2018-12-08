@@ -32,10 +32,10 @@ public class subPNGfinding {
 	private double timefix=2.9f;
 	
 	public subPNGfinding(String dis,String pngbig, String pngsub,int ii) throws IOException {
-		this.currentSubImage = new File(dis, pngsub);
-		this.currentBigImage = new File(dis, pngbig);
+		this.currentSubImage = new File(dis, pngsub);//access screenshot
+		this.currentBigImage = new File(dis, pngbig);//access the chess piece picture cut out by ps increase the accuracy of find the chess piece position
 		if(!this.currentBigImage.exists())System.out.println("找不到大图");
-		if(!this.currentSubImage.exists())System.out.println("找不到小图");
+		if(!this.currentSubImage.exists())System.out.println("找不到小图");//if not find print out not find
 		this.subbufferedImage=ImageIO.read(currentSubImage);
 		this.BigbufferedImage=ImageIO.read(currentBigImage);
 		System.out.println("Scene is："+this.subbufferedImage.getWidth()+" "+this.BigbufferedImage.getWidth());
