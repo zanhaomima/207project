@@ -69,15 +69,15 @@ public class JumpJump {
 	}
 	
 	public static void screenShot() {
-		JumpJump cam = new JumpJump("/Users/jifengzheng/Desktop/Jump.png");//
-        cam.snapShot();
+		JumpJump cam = new JumpJump("/Users/jifengzheng/Desktop/Jump.png");
+        cam.snapShot();//use snapShot to take a screenshot and save in same place overide the lat picture
         try {Thread.sleep(500); } catch(Exception e) {}
 	}
 	
 	public static int JumpPNGCalculateRun() throws IOException {
 		long t=System.currentTimeMillis();
 		subPNGfinding j=new subPNGfinding("/Users/jifengzheng/Desktop/","Jump.png","Jm.png",time++);//function to scan the piece base on image we got out from screen shot by PS
-		if(j.findingsub()) { //
+		if(j.findingsub()) { 
 			j.findingStepPosition();
 			double dist=j.CalaterDistance();
 			System.out.println("Using time: "+(System.currentTimeMillis()-t)+" ns");
