@@ -28,21 +28,29 @@ We aim to replicate the functionality of the original project with additional bu
 
 III. MATERIALS REQUIRED
 According to the project website, the following material is required:
+
 ● Arduino UNO
+
 ● A computer
- ● Arduino button component
+
+● Arduino button component
+
 ● Touch Screen Pen
-If the project is
-met:
-● Milestone 1
-of chessman
-● Milestone 2
-board
+
+If the project is met:
+
+● Milestone 1 of chessman
+
+● Milestone 2 board
+
 ● Milestone 3
-● Milestone 4
-position
+
+● Milestone 4 position
+
 ● Milestone 5
+
 ● Milestone 6
+
 
 
 IV. MILESTONES
