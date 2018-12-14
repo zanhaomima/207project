@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * PixelRGBlist
+ * @author Jifeng Zheng
+ *
+ */
 public class PixelRGBlist {
 	/**
 	 * HashMap list
