@@ -12,6 +12,10 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Main of the project
+ * @author Jifeng Zheng
+ */
 public class JumpJump {
 	
     private String filePreStr; // where you sace the screen shot
