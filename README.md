@@ -38,7 +38,7 @@ According to the project website, the following material is required:
 ● Touch Screen Pen
 
 
-User Manual for Auto-player
+# User Manual for Auto-player
 
 This WeChat Jump auto-player is fairly easy to use, however it does require some effort to set up and some programming knowledge. The first step would be to set up LCD screen and servo on Arduino breadboard and download the Arduino code from GitHub. After load Arduino code in to Arduino clip, the second step would be downloading all the java code into Eclipse and connect phone to computer in order share phone screen to computer. The last step and also the hardest step would be that different phone and PC need to adjust the screenshot size accordingly by change the parameters value in java code and cut the chess piece image out as a model by Photoshop. The last step is fairly hard for people who don’t have knowledge of computer but it is necessary for get an accurate result.
 Furthermore, in our project set up, one end of a wire needs to be fixed on the servo and the other end should be plug in to a fruit and there will need a wet thin page or a wet sponge on the phone screen where the wire pin touches. This set-up is designed for simulating the process of how human finger press on capacitive screen. However, if a touch screen pen is possible to get, it will be less complicated to set up.
