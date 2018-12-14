@@ -14,15 +14,21 @@ import javax.imageio.ImageIO;
 
 public class JumpJump {
 	
-	private String filePreStr; // where you sace the screen shot
+    private String filePreStr; // where you sace the screen shot
     static int serialNum = 0;  //use this number to name the screen shot save in pc
     private static int time=0;
 //    Dimension d=Toolkit.getDefaultToolkit().getScreenSize();
     
+    /**
+     * @param s where you like to save the file
+     */
     public JumpJump(String s) {
         filePreStr = s;
     }
- 
+	
+    /**
+     * Take the screenshot of the computer desktop
+     */ 
     public void snapShot() {
         try {
             // taking a screen shot 
@@ -37,7 +43,11 @@ public class JumpJump {
             System.out.println(ex);
         }
     }
-	
+	/**
+     * main function
+     * @param args
+     * @throws IOException
+     */
 	public static void main(String[] args) throws IOException {    //main function here 
 		Scanner enter = new Scanner(System.in);     
 		SendToArduino arduinoSender=new SendToArduino();
@@ -53,6 +63,11 @@ public class JumpJump {
 //		FindSubimageWindow o=new FindSubimageWindow("/Users/jifengzheng/Desktop/Jump.png", "/Users/jifengzheng/Desktop/jh.png","/Users/jifengzheng/Desktop/jm.png","/Users/jifengzheng/Desktop/solution.png");
 	}
 	
+	/**
+	 * let the jumpjump program start work, after connect success Arduino
+	 * @param arduinoSender where to send the message
+	 * @throws IOException
+	 */
 	public static void runJumpJump(SendToArduino arduinoSender) throws IOException {
 		screenShot();
 		int timepass=JumpPNGCalculateRun();//getting presstime from JumpPNGCalculateRun function
@@ -68,12 +83,20 @@ public class JumpJump {
         
 	}
 	
+	/**
+     * Take the screenshot of the computer desktop
+     */
 	public static void screenShot() {
 		JumpJump cam = new JumpJump("/Users/jifengzheng/Desktop/Jump.png");
         cam.snapShot();//use snapShot to take a screenshot and save in same place overide the lat picture
         try {Thread.sleep(500); } catch(Exception e) {}
 	}
 	
+	/**
+	 * take the image and pross it. find the distance 
+	 * @return if -1 fail to find the distance
+	 * @throws IOException
+	 */
 	public static int JumpPNGCalculateRun() throws IOException {
 		long t=System.currentTimeMillis();
 		subPNGfinding j=new subPNGfinding("/Users/jifengzheng/Desktop/","Jump.png","Jm.png",time++);//function to scan the piece base on image we got out from screen shot by PS
