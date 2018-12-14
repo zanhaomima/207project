@@ -9,12 +9,22 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class PixelRGBlist {
+	/**
+	 * HashMap list
+	 */
 	private HashMap<Integer,LinkedList<PixelRGB>> list;
 	
+	/**
+	 * constructor
+	 */
 	public PixelRGBlist() {
 		list=new HashMap<Integer,LinkedList<PixelRGB>>();
 	}
 	
+	/**
+	 * add pixel into Hashmap
+	 * @param p
+	 */
 	public void add(PixelRGB p) {
 		LinkedList<PixelRGB> l=list.get(p.getPixel());
 		if(l==null) {
@@ -27,6 +37,10 @@ public class PixelRGBlist {
 		}
 	}
 	
+	/**
+	 * sort the HashMap with the LinkedList Size()
+	 * @return second largest LinkedList Size()
+	 */
 	public LinkedList<PixelRGB> sort(){
 		List<Map.Entry<Integer, LinkedList<PixelRGB>>> intervals =
                 new ArrayList<Map.Entry<Integer, LinkedList<PixelRGB>>>(list.entrySet());
@@ -38,13 +52,6 @@ public class PixelRGBlist {
 				intervals.get(i).setValue(nl);
 			}
 		}
-//        System.out.println("------------------排序前--------------------------");
-//        for (int i = 0; i < intervals.size(); i++) {
-//        	PixelRGB p=new PixelRGB();
-//        	p.setRGB(intervals.get(i).getKey());
-//        	p.printRGB();
-//        	System.out.println("  "+intervals.get(i).getKey()+" "+intervals.get(i).getValue().size());
-//        }
         
         Collections.sort(intervals, new Comparator<Map.Entry<Integer, LinkedList<PixelRGB>>>() {   
             public int compare(Map.Entry<Integer, LinkedList<PixelRGB>> o1, Map.Entry<Integer, LinkedList<PixelRGB>> o2) { 
@@ -55,16 +62,13 @@ public class PixelRGBlist {
         	if(!intervals.get(0).getValue().get(0).compara(intervals.get(i).getValue().get(0), 10))return intervals.get(i).getValue();
         }
         return null;
-//        System.out.println("------------------排序后--------------------------");
-//        for (int i = 0; i < intervals.size(); i++) {
-//        	PixelRGB p=new PixelRGB();
-//        	p.setRGB(intervals.get(i).getKey());
-//        	p.printRGB();
-//        	System.out.println("  "+intervals.get(i).getKey()+" "+intervals.get(i).getValue().size());
-//        	if(intervals.get(i).getValue().size()<5)break;
-//        }
 	}
 	
+	/**
+	 * delete the pixel if too far way
+	 * @param l LinkedList<PixelRGB> list
+	 * @return a new list without far way fixel
+	 */
 	public LinkedList<PixelRGB> finddifferent(LinkedList<PixelRGB> l) {
 		LinkedList<PixelRGB> nl=new LinkedList<PixelRGB>();
 		PixelRGB before=l.get(0);
