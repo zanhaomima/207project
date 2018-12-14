@@ -18,9 +18,13 @@ import com.fazecast.jSerialComm.SerialPort;
  */
 public class SendToArduino {
 	
-	static SerialPort chosenPort;
-	private PrintWriter output;
+	static SerialPort chosenPort;//Arduino port
+	private PrintWriter output;//Arduino output
 	
+	/**
+	 * send the pass time to Arduino
+	 * @param timepass how long to pass
+	 */
 	public void sendToArduino(int timepass) {
 		if(!chosenPort.openPort()) {
 			System.out.println("Arduino is disconnect");
