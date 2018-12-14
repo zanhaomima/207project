@@ -15,22 +15,30 @@ import marvin.io.MarvinImageIO;
  *
  */
 public class subPNGfinding {
-	private int x;
-	private int y;
-	private int width;
-	private int height;
-	private int dx;
-	private int dy;
-	private int marky=180;
-	private File currentSubImage;
-	private File currentBigImage;
-	private BufferedImage subbufferedImage;
-	private BufferedImage BigbufferedImage;
-	private MarvinImage window;
-	private String newdis;
-	private PixelRGBlist list;
-	private double timefix=2.9f;
+	private int x;//position of x
+	private int y;//position of y
+	private int width;//of the step
+	private int height;//of the step
+	private int dx;//of the step
+	private int dy;//of the step
+	private int marky=180;//start the loop point
+	private File currentSubImage;//small image
+	private File currentBigImage;//screenshot
+	private BufferedImage subbufferedImage;//buffer small image
+	private BufferedImage BigbufferedImage;//buffer screenshot
+	private MarvinImage window;//draw image
+	private String newdis;//where to save
+	private PixelRGBlist list;//the HashMap
+	private double timefix=2.9f;//times pass time
 	
+	/**
+	 * constructor
+	 * @param dis where to save
+	 * @param pngbig screenshot
+	 * @param pngsub small man
+	 * @param ii solution place
+	 * @throws IOException
+	 */
 	public subPNGfinding(String dis,String pngbig, String pngsub,int ii) throws IOException {
 		this.currentSubImage = new File(dis, pngsub);//access screenshot
 		this.currentBigImage = new File(dis, pngbig);//access the chess piece picture cut out by ps increase the accuracy of find the chess piece position
@@ -44,14 +52,9 @@ public class subPNGfinding {
 		list=new PixelRGBlist();
 	}
 	
-	public boolean findingsubNew() {
-		
-//		System.out.println("Get it x: "+f+" y: "+i+" z:"+(z*15));
-//		drawline(window, f , i, subbufferedImage.getWidth(), subbufferedImage.getHeight());
-//					MarvinImageIO.saveImage(window, this.newdis);
-		return true;
-	}
-	
+	/**
+	* return true if the small is find, otherwais return false;
+	*/
 	public boolean findingsub() throws IOException {
 		for(int z=1;z<8;z++) {
 			for(int i=this.marky;i<BigbufferedImage.getHeight()*0.75;i++) {
@@ -69,6 +72,15 @@ public class subPNGfinding {
 		return false;
 	}
 	
+	/**
+	 * from this position start to compara two image
+	 * @param BigbufferedImage screenshot
+	 * @param subbufferedImage small man
+	 * @param x start point
+	 * @param y start point
+	 * @param Xlong 
+	 * @return
+	 */
 	public boolean checkfromthispiexl(BufferedImage BigbufferedImage, BufferedImage subbufferedImage, int x, int y,int Xlong) {
 		PixelRGB p=new PixelRGB();
 		PixelRGB b=new PixelRGB();
@@ -86,6 +98,14 @@ public class subPNGfinding {
 		return true;
 	}
 	
+	/**
+	 * draw a line in the image
+	 * @param image
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
 	private void drawline(MarvinImage image, int x, int y, int width, int height) {
 		image.drawRect(x, y, width, height, Color.red);
 		this.x=x;
@@ -94,11 +114,20 @@ public class subPNGfinding {
 		this.height=height;
 	}
 	
+	/**
+	 * draw a point in the image
+	 * @param x
+	 * @param y
+	 * @param c color you like
+	 */
 	private void drawPoint(int x, int y,Color c) {
 		window.drawRect(x, y, 1, 1, c);
 	}
 	
-	
+	/**
+	 * read all the pixel to add into the Hashmap, and take out the second largest LinkedList
+	 * @throws IOException
+	 */
 	public void findingStepPosition() throws IOException {
 		for(int i=this.marky;i<this.y+subbufferedImage.getHeight()/2;i++) {
 			for(int f=0;f<BigbufferedImage.getWidth();f++) {
@@ -123,6 +152,11 @@ public class subPNGfinding {
 		findMaxAndMix(nl);
 	}
 	
+	/**
+	 * find the Center of the step
+	 * @param l
+	 * @return
+	 */
 	public int[] findMaxAndMix(LinkedList<PixelRGB> l) {
 		int n[]= {100000,0,100000,0};
 		for (PixelRGB j : l) {
@@ -137,24 +171,15 @@ public class subPNGfinding {
 		return n;
 	}
 	
+	/**
+	 * calcutlater the Distance between smallman and next step
+	 * @return solution
+	 */
 	public double CalaterDistance()
     {
 		window.drawLine((this.x+this.subbufferedImage.getWidth()/2), (this.y+108), this.dx, this.dy, Color.GREEN);
 		MarvinImageIO.saveImage(window, this.newdis);
         return this.timefix*Math.sqrt(Math.pow(Math.abs(this.dx - (this.x+this.subbufferedImage.getWidth()/2)), 2) + Math.pow(Math.abs(this.dy - (this.y+108)), 2));
     }
-	
-	
-//	PixelRGB p=new PixelRGB();
-//	for(int i=0;i<subbufferedImage.getHeight();i++) {
-//		for(int f=0;f<subbufferedImage.getWidth();f++) {
-//			p.reset();
-//			p.setRGB(subbufferedImage.getRGB(f,i));
-//			p.printRGB();
-//			System.out.print(" ");
-//		}
-//		System.out.println(" ");
-//	}
-//	
 	
 }
