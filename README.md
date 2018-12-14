@@ -16,7 +16,7 @@ The build team consists of:
 
 # Arduino_connection
 ![alt text](https://github.com/zanhaomima/207project/blob/master/cs207.png)
-
+![alt text](https://github.com/zanhaomima/207project/blob/master/image.png)
 
 # User Manual for Auto-player
 
